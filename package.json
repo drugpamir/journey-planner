@@ -1,8 +1,8 @@
 {
-  "name": "life",
+  "name": "journey",
   "version": "1.0.0",
   "description": "Simple Task Manager",
-  "main": "index.html",
+  "main": "src/index.tsx",
   "scripts": {
     "lint": "eslint . && prettier --check",
     "lint:fix": "eslint --fix && prettier --write --ignore-unknown",
@@ -19,10 +19,13 @@
   "devDependencies": {
     "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.8",
+    "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.25.7",
     "@eslint/js": "^9.12.0",
     "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.5.13",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
@@ -41,5 +44,15 @@
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
-  }
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "keywords": [
+    "journey",
+    "trip",
+    "walk",
+    "walking"
+  ]
 }

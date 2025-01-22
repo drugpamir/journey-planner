@@ -30,6 +30,7 @@ module.exports = {
     open: true, // Автоматически открывать браузер
     compress: true,
     port: 9000,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

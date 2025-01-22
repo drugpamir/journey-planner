@@ -1,19 +1,21 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import About from "./pages/About";
-import Locations from "./pages/Locations";
-import Journeys from "./pages/Journeys";
-import JourneyEditor from "./pages/JourneyEditor";
+import { About, TO_ABOUT } from "./pages/About";
+import { Locations, TO_LOCATIONS } from "./pages/Locations";
+import { Journeys, TO_JOURNEYS } from "./pages/Journeys";
+import { JourneyEditor, TO_JOURNEY_EDITOR } from "./pages/JourneyEditor";
+import { NavBar } from "./components/NavBar";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<About />} />
-        <Route path="about" element={<About />} />
-        <Route path="locations" element={<Locations />} />
-        <Route path="journeys" element={<Journeys />} />
-        <Route path="editor" element={<JourneyEditor />} />
+        <Route path={TO_ABOUT} element={<About />} />
+        <Route path={TO_LOCATIONS} element={<Locations />} />
+        <Route path={TO_JOURNEYS} element={<Journeys />} />
+        <Route path={TO_JOURNEY_EDITOR} element={<JourneyEditor />} />
       </Routes>
     </BrowserRouter>
   );

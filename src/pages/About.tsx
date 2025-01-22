@@ -1,7 +1,7 @@
 import React from "react";
 
-const About = () => {
+export const TO_ABOUT = "/about";
+
+export const About = () => {
   return <h1>О планировщике прогулок</h1>;
 };
-
-export default About;

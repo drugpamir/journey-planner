@@ -1,7 +1,7 @@
 import React from "react";
 
-const Journeys = () => {
+export const TO_JOURNEYS = "/journeys";
+
+export const Journeys = () => {
   return <h1>Список маршрутов для прогулок</h1>;
 };
-
-export default Journeys;

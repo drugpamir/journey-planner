@@ -1,7 +1,7 @@
 import React from "react";
 
-const Locations = () => {
+export const TO_LOCATIONS = "/locations";
+
+export const Locations = () => {
   return <h1>Локации/города</h1>;
 };
-
-export default Locations;

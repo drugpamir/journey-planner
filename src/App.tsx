@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About, TO_ABOUT } from "./pages/About";
 import { Locations, TO_LOCATIONS } from "./pages/Locations";
 import { Journeys, TO_JOURNEYS } from "./pages/Journeys";

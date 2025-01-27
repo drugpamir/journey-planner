@@ -11,8 +11,9 @@
     "lint-staged": {
       "**/*": "lint:fix"
     },
-    "build": "npx webpack --mode=production --config webpack.config.js",
-    "dev": "webpack serve  --mode=development"
+    "db": "npx json-server src/data/cities.json",
+    "dev": "webpack serve  --mode=development",
+    "build": "npx webpack --mode=production --config webpack.config.js"
   },
   "author": "Anatoly",
   "license": "ISC",
@@ -48,6 +49,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "json-server": "^1.0.0-beta.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",

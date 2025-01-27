@@ -5,6 +5,7 @@ import { Locations, TO_LOCATIONS } from "./pages/Locations";
 import { Journeys, TO_JOURNEYS } from "./pages/Journeys";
 import { JourneyEditor, TO_JOURNEY_EDITOR } from "./pages/JourneyEditor";
 import { NavBar } from "./components/NavBar";
+import "./styles.css";
 
 const App = () => {
   return (

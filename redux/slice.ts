@@ -1,11 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { City } from "../models/City";
 
-const initialState = { id: 1 };
+type CitiesState = {
+  cities: City[];
+  isLoading: boolean;
+  error: string;
+};
 
-export const mainSlice = createSlice({
-  name: "slice",
+const initialState: CitiesState = {
+  cities: [],
+  isLoading: false,
+  error: "",
+};
+
+export const citiesSlice = createSlice({
+  name: "cities",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addDefaultCase(() => {});
+  },
 });
 
-export default mainSlice.reducer;
+export default citiesSlice.reducer;

@@ -1,0 +1,18 @@
+html {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar a {
+  padding: 5px 10px;
+}
+
+.navbar a.active {
+  font-weight: 900;
+  border: 1px solid green;
+}

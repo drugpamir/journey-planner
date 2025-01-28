@@ -14,5 +14,5 @@ html {
 
 .navbar a.active {
   font-weight: 900;
-  border: 1px solid green;
+  border: 1px solid teal;
 }

@@ -5,15 +5,17 @@ import { TO_JOURNEYS } from "../pages/Journeys";
 import { TO_JOURNEY_EDITOR } from "../pages/JourneyEditor";
 import NavItem from "./NavItem";
 
-export const NavBar = () => {
+const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__links">
-        <NavItem to={TO_ABOUT} />
-        <NavItem to={TO_CITIES} />
-        <NavItem to={TO_JOURNEYS} />
-        <NavItem to={TO_JOURNEY_EDITOR} />
+        <NavItem to={TO_ABOUT}>About</NavItem>
+        <NavItem to={TO_CITIES}>Cities</NavItem>
+        <NavItem to={TO_JOURNEYS}>Journeys</NavItem>
+        <NavItem to={TO_JOURNEY_EDITOR}>Editor</NavItem>
       </div>
     </nav>
   );
 };
+
+export default NavBar;

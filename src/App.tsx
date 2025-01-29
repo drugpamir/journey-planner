@@ -1,30 +1,14 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { About, TO_ABOUT } from "./pages/About";
-import { Cities, TO_CITIES } from "./pages/Cities";
-import { Journeys, TO_JOURNEYS } from "./pages/Journeys";
-import { JourneyEditor, TO_JOURNEY_EDITOR } from "./pages/JourneyEditor";
-import { NavBar } from "./components/NavBar";
-import { getAllCityInfo } from "./redux/actionCreators";
-import { useAppDispatch } from "./hooks/redux";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import AppRouter from "./components/AppRouter";
 import "./styles.css";
 
 const App = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getAllCityInfo("Podolsk"));
-  }, []);
-
   return (
     <BrowserRouter>
-      <NavBar></NavBar>
-      <Routes>
-        <Route path="/" element={<About />} />
-        <Route path={TO_ABOUT} element={<About />} />
-        <Route path={TO_CITIES} element={<Cities />} />
-        <Route path={TO_JOURNEYS} element={<Journeys />} />
-        <Route path={TO_JOURNEY_EDITOR} element={<JourneyEditor />} />
-      </Routes>
+      <NavBar />
+      <AppRouter />
     </BrowserRouter>
   );
 };

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About, TO_ABOUT } from "./pages/About";
-import { Locations, TO_LOCATIONS } from "./pages/Locations";
+import { Cities, TO_CITIES } from "./pages/Cities";
 import { Journeys, TO_JOURNEYS } from "./pages/Journeys";
 import { JourneyEditor, TO_JOURNEY_EDITOR } from "./pages/JourneyEditor";
 import { NavBar } from "./components/NavBar";
-import "./styles.css";
 import { getAllCityInfo } from "./redux/actionCreators";
 import { useAppDispatch } from "./hooks/redux";
+import "./styles.css";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<About />} />
         <Route path={TO_ABOUT} element={<About />} />
-        <Route path={TO_LOCATIONS} element={<Locations />} />
+        <Route path={TO_CITIES} element={<Cities />} />
         <Route path={TO_JOURNEYS} element={<Journeys />} />
         <Route path={TO_JOURNEY_EDITOR} element={<JourneyEditor />} />
       </Routes>

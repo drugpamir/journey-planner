@@ -8,11 +8,34 @@ html {
   text-align: center;
 }
 
-.navbar a {
-  padding: 5px 10px;
+.navbar {
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+  background: lightgoldenrodyellow;
+}
+
+/* .navbar__links {
+  margin-left: auto;
+} */
+
+.navbar__link {
+  margin: 0 15px;
+  padding: 10px 15px;
 }
 
 .navbar a.active {
-  font-weight: 900;
+  font-weight: 700;
   border: 1px solid teal;
+}
+
+.dialogButton {
+  padding: 5px 15px;
+  color: teal;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid teal;
+  cursor: pointer;
 }

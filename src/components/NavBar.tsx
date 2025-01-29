@@ -8,10 +8,12 @@ import NavItem from "./NavItem";
 export const NavBar = () => {
   return (
     <nav className="navbar">
-      <NavItem to={TO_ABOUT}>О планировщике</NavItem>
-      <NavItem to={TO_CITIES}>Локации</NavItem>
-      <NavItem to={TO_JOURNEYS}>Маршруты</NavItem>
-      <NavItem to={TO_JOURNEY_EDITOR}>Редактор</NavItem>
+      <div className="navbar__links">
+        <NavItem to={TO_ABOUT} />
+        <NavItem to={TO_CITIES} />
+        <NavItem to={TO_JOURNEYS} />
+        <NavItem to={TO_JOURNEY_EDITOR} />
+      </div>
     </nav>
   );
 };

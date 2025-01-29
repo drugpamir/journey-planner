@@ -31,6 +31,15 @@ html {
   border: 1px solid teal;
 }
 
+.city {
+  display: flex;
+  padding: 15px;
+  border: 2px solid teal;
+  margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .dialogButton {
   padding: 5px 15px;
   color: teal;

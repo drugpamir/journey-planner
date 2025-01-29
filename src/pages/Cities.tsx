@@ -2,15 +2,18 @@ import React from "react";
 import AddCityForm from "../components/Form.AddCity";
 import CityList from "../components/CityList";
 import { City } from "../models/City";
-import { useAppSelector } from "../hooks/redux";
-import { citiesSlice } from "../redux/slice";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { removeCityFromStorage } from "../redux/actionCreators";
 
 export const TO_CITIES = "/cities";
 
 export const Cities = () => {
-  const removeCity = (city: City) => {};
   const citiesState = useAppSelector((state) => state.cities);
-  console.log("citiesState:" + citiesState);
+  const dispatch = useAppDispatch();
+
+  const removeCity = (city: City) => {
+    dispatch(removeCityFromStorage(city));
+  };
 
   return (
     <>

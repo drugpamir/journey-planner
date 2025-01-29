@@ -4,6 +4,7 @@ import {
   addCityToStorage,
   getStorageCities,
   fetchCityInfo,
+  removeCityFromStorage,
 } from "./actionCreators";
 
 type CitiesState = {
@@ -38,7 +39,13 @@ export const citiesSlice = createSlice({
         state.cities.push(action.payload);
         state.isLoading = false;
         state.error = "";
-        console.log("city added to state");
+      })
+      .addCase(removeCityFromStorage.fulfilled, (state, action) => {
+        state.cities = state.cities.filter(
+          (city) => city.id !== action.meta.arg.id,
+        );
+        state.isLoading = false;
+        state.error = "";
       })
       .addDefaultCase(() => {});
   },

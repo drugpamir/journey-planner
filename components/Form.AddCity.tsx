@@ -34,8 +34,8 @@ function AddCityForm() {
         placeholder="Moscow"
         onChange={(e) => setCityName(e.target.value)}
       />
-      <button onClick={onFetchCityInfo}>Get info</button>
-      <button onClick={onAddCity}>Add city</button>
+      <DialogButton onClick={onFetchCityInfo}>Get info</DialogButton>
+      <DialogButton onClick={onAddCity}>Add city</DialogButton>
     </>
     // <Form>
     //   <label htmlFor="city-name">City</label>

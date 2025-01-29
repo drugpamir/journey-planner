@@ -1,8 +1,16 @@
 import React from "react";
 
-function DialogButton({ children, ...props }: { children: any }) {
+function DialogButton({
+  children,
+  onClick,
+  ...props
+}: {
+  children: any;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  props?: any;
+}) {
   return (
-    <button {...props} className={"dialogButton"}>
+    <button onClick={onClick} {...props} className={"dialogButton"}>
       {children}
     </button>
   );

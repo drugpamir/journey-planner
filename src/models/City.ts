@@ -1,70 +1,38 @@
 import { generateID } from "../utils/dataGenerator";
-import { Coords } from "./Coords";
 import { Journey } from "./Journey";
 
-export class City {
-  private _id: string;
-  private _name: string;
-  private _localNames: Record<string, string>;
-  private _localName: string;
-  private _state: string;
-  private _country: string;
-  private _coords: Coords;
-  private _journeys: Journey[];
+export type CityInput = {
+  name: string;
+  local_names: Record<string, string>;
+  state: string;
+  country: string;
+  lat: number;
+  lon: number;
+};
 
-  constructor({
-    name,
-    local_names,
-    state,
-    country,
-    lat,
-    lon,
-  }: {
-    name: string;
-    local_names: object;
-    state: string;
-    country: string;
-    lat: number;
-    lon: number;
-  }) {
-    this._id = generateID();
-    this._name = name;
+export type City = CityInput & {
+  id: string;
+  local_name: string;
+  journeys: Journey[];
+};
 
-    this._localNames = { ...local_names };
-    const locale = navigator.language;
-    this._localName = this._localNames[locale];
-
-    this._state = state;
-    this._country = country;
-    this._coords = { latitude: lat, longitude: lon };
-    this._journeys = [];
-  }
-
-  public get id() {
-    return this._id;
-  }
-
-  public get name() {
-    return this._name;
-  }
-
-  public get localName() {
-    return this._localName;
-  }
-
-  public get state() {
-    return this._state;
-  }
-
-  public get country() {
-    return this._country;
-  }
-
-  public get coords() {
-    return this._coords;
-  }
-
-  public get journeys() {
-    return this._journeys;
-  }
+export function parseToCity(cityInput: CityInput): City {
+  return {
+    ...cityInput,
+    id: generateID(),
+    local_name: cityInput.local_names[navigator.language],
+    journeys: [],
+  };
 }
+
+export const CityByDefault: City = {
+  id: generateID(),
+  name: "Moscow",
+  local_names: { ru: "Москва" },
+  local_name: "Москва",
+  state: "Moscow",
+  country: "RU",
+  lat: 33,
+  lon: 55,
+  journeys: [],
+};

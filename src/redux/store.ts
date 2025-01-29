@@ -6,8 +6,8 @@ const rootReducer = combineSlices(citiesSlice);
 export const setupStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }),
+    // middleware: (getDefaultMiddleware) =>
+    //   getDefaultMiddleware({ serializableCheck: false }),
   });
 
 export type RootState = ReturnType<typeof rootReducer>;

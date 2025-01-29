@@ -1,7 +1,5 @@
-import { City } from "../models/City";
+import { City, CityByDefault, parseToCity } from "../models/City";
 import { fetchJson } from "./fetchUrl";
-
-console.log("process:", process);
 
 const endpoint = process.env?.CITIES_ENDPOINT;
 const apiKey = process.env?.CITIES_API_KEY;
@@ -15,18 +13,11 @@ export async function fetchCityInfo(
   let city: City;
   try {
     const json = await fetchJson(_url);
-    city = new City(json[0]);
+    city = parseToCity(json[0]);
     console.log("Loaded json:", json);
     console.log("Loaded city:", city);
   } catch {
-    city = new City({
-      name: "Moscow",
-      local_names: { ru: "Москва" },
-      state: "Moscow",
-      country: "RU",
-      lat: 33,
-      lon: 55,
-    });
+    city = CityByDefault;
     console.log("City NOT found");
   }
   return city;

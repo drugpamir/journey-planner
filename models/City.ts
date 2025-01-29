@@ -8,16 +8,25 @@ export class City {
   private _localNames: Record<string, string>;
   private _localName: string;
   private _state: string;
+  private _country: string;
   private _coords: Coords;
   private _journeys: Journey[];
 
-  constructor(
-    name: string,
-    local_names: object,
-    state: string,
-    latitude: number,
-    longitude: number,
-  ) {
+  constructor({
+    name,
+    local_names,
+    state,
+    country,
+    lat,
+    lon,
+  }: {
+    name: string;
+    local_names: object;
+    state: string;
+    country: string;
+    lat: number;
+    lon: number;
+  }) {
     this._id = generateID();
     this._name = name;
 
@@ -26,7 +35,8 @@ export class City {
     this._localName = this._localNames[locale];
 
     this._state = state;
-    this._coords = { latitude, longitude };
+    this._country = country;
+    this._coords = { latitude: lat, longitude: lon };
     this._journeys = [];
   }
 
@@ -44,6 +54,10 @@ export class City {
 
   public get state() {
     return this._state;
+  }
+
+  public get country() {
+    return this._country;
   }
 
   public get coords() {

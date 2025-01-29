@@ -22,33 +22,26 @@ function AddCityForm() {
     console.log("onAddCity for city:", citiesState.addingCity);
     if (citiesState.addingCity) {
       dispatch(addCityToStorage(citiesState.addingCity));
+      setCityName("");
     }
   };
 
   return (
-    <>
+    <form>
+      <label htmlFor="city-name" style={{ margin: "20px" }}>
+        City
+      </label>
       <input
         type="text"
         name="city_name"
         id="city-name"
         placeholder="Moscow"
+        value={cityName}
         onChange={(e) => setCityName(e.target.value)}
       />
       <DialogButton onClick={onFetchCityInfo}>Get info</DialogButton>
       <DialogButton onClick={onAddCity}>Add city</DialogButton>
-    </>
-    // <Form>
-    //   <label htmlFor="city-name">City</label>
-    //   <input
-    //     type="text"
-    //     name="city_name"
-    //     id="city-name"
-    //     placeholder="Moscow"
-    //     onChange={(e) => setCityName(e.target.value)}
-    //   />
-    //   <button onClick={fetchCityInfo}>Get info</button>
-    //   {/* <DialogButton>Add city</DialogButton> */}
-    // </Form>
+    </form>
   );
 }
 

@@ -26,3 +26,11 @@ export const addCityToStorage = createAsyncThunk(
     return response;
   },
 );
+
+export const removeCityFromStorage = createAsyncThunk(
+  "cities/remove",
+  async (city: City /*, thunkAPI*/) => {
+    const response = await cityStorageApi.removeCity(city.id);
+    return response;
+  },
+);

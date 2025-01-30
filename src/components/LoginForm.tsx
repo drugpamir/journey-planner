@@ -20,7 +20,7 @@ const LoginForm = () => {
   const handleLogin = async (e: any) => {
     console.log("handleLogin");
     e.preventDefault();
-    let user: User | null = null;
+    let user: User = null;
     user = await userApi.logIn({ email, password });
     console.log("user:", user);
     if (user) {

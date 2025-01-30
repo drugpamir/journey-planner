@@ -1,19 +1,15 @@
 import React from "react";
 
 import NavItem from "./NavItem";
-import { AppRoutes } from "../utils/consts";
 import DialogButton from "./DialogButton";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { logoutUser } from "../redux/userActionCreators";
 import ModalLoginForm from "./ModalLoginForm";
 import useUser from "../hooks/useUser";
-// import useLoggedIn from "../hooks/useLoggedIn";
+import { AppRoutes } from "../utils/consts";
+import { useAppDispatch } from "../hooks/redux";
+import { logoutUser } from "../redux/userActionCreators";
 
 const NavBar = () => {
-  // const [isLoggedIn] = useLoggedIn();
   const dispatch = useAppDispatch();
-  // const [_, updateLoggedIn] = useLoggedIn();
-
   const [user, setUser] = useUser();
 
   const handleLogButton = () => {

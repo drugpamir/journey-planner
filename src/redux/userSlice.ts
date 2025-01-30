@@ -1,10 +1,10 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { User, UserByDefault } from "../models/User";
 import { loginUser, logoutUser, signUpUser } from "./userActionCreators";
 
 type UserState = {
-  user: User | null;
+  user: User;
   isLoggedIn: boolean;
 };
 
@@ -16,7 +16,11 @@ const initialState: UserState = {
 export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setUserReducer(state, action: PayloadAction<User | null>) {
+      state.user = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(signUpUser.fulfilled, (state, action) => {
@@ -41,5 +45,7 @@ export const userLoggedSelector = createSelector(
   [(state: UserState) => state.isLoggedIn],
   (isLoggedIn) => isLoggedIn,
 );
+
+export const { setUserReducer } = userSlice.actions;
 
 export default userSlice.reducer;

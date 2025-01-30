@@ -55,7 +55,7 @@ export class UserApiFirebase implements UserApi {
   }
 }
 
-function parseToAppUser(userFirebase: UserFB | null): User | null {
+function parseToAppUser(userFirebase: UserFB | null): User {
   if (!userFirebase) {
     return null;
   }

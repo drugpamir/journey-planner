@@ -3,3 +3,9 @@ export type User = {
   email: string;
   name: string;
 };
+
+export const UserByDefault: User = {
+  id: "user",
+  email: "user@otus.ru",
+  name: "user",
+};

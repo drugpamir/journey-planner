@@ -6,7 +6,7 @@ import Journeys from "../pages/Journeys";
 import { AppRoutes } from "../utils/consts";
 
 export type AppRoute = {
-  route: string;
+  route: AppRoutes;
   page: (...args: any) => React.JSX.Element; //eslint-disable-line @typescript-eslint/no-explicit-any
 };
 

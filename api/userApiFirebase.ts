@@ -6,13 +6,18 @@ import {
   signOut,
 } from "firebase/auth";
 import { UserApi } from "./userApi";
-import { User as User } from "../models/User";
+import { User as User, UserCredentials } from "../models/User";
 import { generateID } from "../utils/dataGenerator";
+// import { initializeApp } from "firebase/app";
+// import { firebaseConfig } from "../utils/config";
+
+// export const app = initializeApp(firebaseConfig);
+// export const auth = getAuth();
 
 export class UserApiFirebase implements UserApi {
-  async signUp(email: string, password: string): Promise<User> {
+  async signUp({ email, password }: UserCredentials): Promise<User> {
     const auth = getAuth();
-    let user: UserFB | undefined;
+    let user: UserFB | null = null;
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         user = userCredential.user;
@@ -23,9 +28,9 @@ export class UserApiFirebase implements UserApi {
     return parseToAppUser(user);
   }
 
-  async logIn(email: string, password: string): Promise<User> {
+  async logIn({ email, password }: UserCredentials): Promise<User> {
     const auth = getAuth();
-    let user: UserFB | undefined;
+    let user: UserFB | null = null;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         user = userCredential.user;
@@ -50,7 +55,10 @@ export class UserApiFirebase implements UserApi {
   }
 }
 
-function parseToAppUser(userFirebase?: UserFB): User {
+function parseToAppUser(userFirebase: UserFB | null): User {
+  if (!userFirebase) {
+    return null;
+  }
   return {
     id: userFirebase?.uid || generateID(),
     email: userFirebase?.email || "unknown",

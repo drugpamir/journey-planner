@@ -5,7 +5,7 @@ import { fetchCityInfo, addCityToStorage } from "../redux/citiesActionCreators";
 
 function CityAddingForm() {
   const [cityName, setCityName] = useState<string>("");
-  const citiesState = useAppSelector((state) => state.cities);
+  const { addingCity } = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
 
   const handleFetchCityInfo = (e: any) => {
@@ -13,11 +13,11 @@ function CityAddingForm() {
     dispatch(fetchCityInfo(cityName));
   };
 
-  const handleAddCity = (e: any) => {
+  const handleAddCityToStorage = (e: any) => {
     e.preventDefault();
-    console.log("onAddCity for city:", citiesState.addingCity);
-    if (citiesState.addingCity) {
-      dispatch(addCityToStorage(citiesState.addingCity));
+    console.log("handleAddCity for city:", addingCity);
+    if (addingCity) {
+      dispatch(addCityToStorage(addingCity));
       setCityName("");
     }
   };
@@ -36,7 +36,7 @@ function CityAddingForm() {
         onChange={(e) => setCityName(e.target.value)}
       />
       <DialogButton onClick={handleFetchCityInfo}>Get info</DialogButton>
-      <DialogButton onClick={handleAddCity}>Add city</DialogButton>
+      <DialogButton onClick={handleAddCityToStorage}>Add city</DialogButton>
     </form>
   );
 }

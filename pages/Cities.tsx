@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import CityAddingForm from "../components/CityAddingForm";
 import CityList from "../components/CityList";
 import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { removeCityFromStorage } from "../redux/citiesActionCreators";
-import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../utils/consts";
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const Cities = ({ route: routeCities }: Props) => {
-  const citiesState = useAppSelector((state) => state.cities);
+  const { cities } = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ const Cities = ({ route: routeCities }: Props) => {
       <h1>Cities</h1>
       <CityAddingForm></CityAddingForm>
       <CityList
-        cities={citiesState.cities}
+        cities={cities}
         title="Added cities"
         navToCityJourneys={navToCityJourneys}
         removeCity={removeCity}

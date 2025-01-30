@@ -1,20 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { User } from "../models/User";
-import { userApi } from "../api/userApi";
+import { User, UserCredentials } from "../models/User";
+import { userApi } from "../utils/config";
 
 export const signUpUser = createAsyncThunk(
   "user/signup",
-  async ({ email, password }: { email: string; password: string }) => {
-    const user: User = await userApi.signUp(email, password);
+  async (credentials: UserCredentials) => {
+    const user: User = await userApi.signUp(credentials);
     return user;
   },
 );
 
 export const loginUser = createAsyncThunk(
   "user/login",
-  async ({ email, password }: { email: string; password: string }) => {
-    const user: User = await userApi.logIn(email, password);
+  async (credentials: UserCredentials) => {
+    const user: User = await userApi.logIn(credentials);
     return user;
   },
 );

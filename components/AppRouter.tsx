@@ -6,18 +6,14 @@ import About from "../pages/About";
 import Cities from "../pages/Cities";
 import Journeys from "../pages/Journeys";
 import JourneyEditor from "../pages/JourneyEditor";
-import { AppRoutes } from "../utils/consts";
-import { userApi } from "../api/userApi";
 import Error404 from "../pages/Error404";
+import { AppRoutes } from "../utils/consts";
 
 function AppRouter() {
   return (
     <Routes>
       <Route index element={<About />} />
-      <Route
-        path={AppRoutes.LOGIN}
-        element={<Login userApi={userApi} routeIfLogin={AppRoutes.CITIES} />}
-      />
+      <Route path={AppRoutes.LOGIN} element={<Login />} />
       <Route path={AppRoutes.ABOUT} element={<About />} />
       <Route
         path={AppRoutes.CITIES}

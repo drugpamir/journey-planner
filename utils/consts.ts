@@ -5,3 +5,5 @@ export enum AppRoutes {
   JOURNEYS = "/editor",
   JOURNEY_EDITOR = "/journeys",
 }
+
+export const routeIfLogin: AppRoutes = AppRoutes.CITIES;

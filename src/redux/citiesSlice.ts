@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { City, CityByDefault } from "../models/City";
 import {
@@ -51,5 +51,15 @@ export const citiesSlice = createSlice({
       .addDefaultCase(() => {});
   },
 });
+
+export const cityAddingSelector = createSelector(
+  [(state: CitiesState) => state.addingCity],
+  (addingCity) => addingCity,
+);
+
+export const citiesSelector = createSelector(
+  [(state: CitiesState) => state.cities],
+  (cities) => cities,
+);
 
 export default citiesSlice.reducer;

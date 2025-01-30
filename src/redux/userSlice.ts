@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { User, UserByDefault } from "../models/User";
 import { loginUser, logoutUser, signUpUser } from "./userActionCreators";
@@ -27,8 +27,19 @@ export const userSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoggedIn = action.payload;
-      });
+      })
+      .addDefaultCase(() => {});
   },
 });
+
+export const userInfoSelector = createSelector(
+  [(state: UserState) => state.user],
+  (user) => user,
+);
+
+export const userLoggedSelector = createSelector(
+  [(state: UserState) => state.isLoggedIn],
+  (isLoggedIn) => isLoggedIn,
+);
 
 export default userSlice.reducer;

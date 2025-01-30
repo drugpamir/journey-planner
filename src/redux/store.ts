@@ -1,4 +1,5 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
+
 import { citiesSlice } from "./citiesSlice";
 import { userSlice } from "./userSlice";
 

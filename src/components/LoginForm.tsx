@@ -2,29 +2,34 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AppRoutes } from "../utils/consts";
-import { UserApi } from "../api/userApi";
 import { User } from "../models/User";
+import { userApi } from "../utils/config";
+import useUser from "../hooks/useUser";
 
-export interface PropsLogin {
-  userApi: UserApi;
-  routeIfLogin: AppRoutes;
-}
-
-const LoginForm = ({ userApi: loginApi, routeIfLogin }: PropsLogin) => {
+const LoginForm = () => {
   const [email, setEmail] = useState("otus@example.com");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
+  const [_, setUser] = useUser();
+
+  console.log("LoginForm");
+
   const navigate = useNavigate();
 
   const handleLogin = async (e: any) => {
+    console.log("handleLogin");
     e.preventDefault();
-    const user: User = await loginApi.logIn(email, password);
+    let user: User | null = null;
+    user = await userApi.logIn({ email, password });
     console.log("user:", user);
     if (user) {
+      setUser(user);
       setError(false);
-      navigate(routeIfLogin);
+      navigate(AppRoutes.CITIES);
     } else {
+      navigate(AppRoutes.ABOUT);
+      setUser(null);
       setError(true);
     }
   };

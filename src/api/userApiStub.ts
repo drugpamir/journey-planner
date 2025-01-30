@@ -1,7 +1,7 @@
-import { LoginApi } from "./loginApi";
+import { UserApi } from "./userApi";
 import { User } from "../models/User";
 
-export class LoginApiStub implements LoginApi {
+export class UserApiStub implements UserApi {
   signUp(email: string /*, password: string*/): Promise<User> {
     if (email.includes("otus") || email.includes("admin")) {
       return Promise.resolve({

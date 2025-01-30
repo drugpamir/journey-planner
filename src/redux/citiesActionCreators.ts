@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { City } from "../models/City";
 import { cityStorageApi } from "../api/storageApi";
 import { cityInfoOpenApi } from "../api/cityInfoApi";

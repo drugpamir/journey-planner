@@ -1,7 +1,7 @@
 import { User } from "../models/User";
-import { LoginApiStub } from "./loginApiStub";
+import { UserApiStub } from "./userApiStub";
 
-export interface LoginApi {
+export interface UserApi {
   signUp(email: string, password: string): Promise<User>;
 
   logIn(email: string, password: string): Promise<User>;
@@ -9,4 +9,4 @@ export interface LoginApi {
   logOut(): Promise<boolean>;
 }
 
-export const loginApi: LoginApi = new LoginApiStub();
+export const userApi: UserApi = new UserApiStub();

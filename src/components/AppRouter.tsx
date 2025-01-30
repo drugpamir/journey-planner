@@ -7,7 +7,7 @@ import Cities from "../pages/Cities";
 import Journeys from "../pages/Journeys";
 import JourneyEditor from "../pages/JourneyEditor";
 import { AppRoutes } from "../utils/consts";
-import { loginApi } from "../api/loginApi";
+import { userApi } from "../api/userApi";
 
 function AppRouter() {
   return (
@@ -15,7 +15,7 @@ function AppRouter() {
       <Route index element={<About />} />
       <Route
         path={AppRoutes.LOGIN}
-        element={<Login loginApi={loginApi} routeIfLogin={AppRoutes.CITIES} />}
+        element={<Login userApi={userApi} routeIfLogin={AppRoutes.CITIES} />}
       />
       <Route path={AppRoutes.ABOUT} element={<About />} />
       <Route

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AppRoutes } from "../utils/consts";
-import { LoginApi } from "../api/loginApi";
+import { UserApi } from "../api/userApi";
 import { User } from "../models/User";
 
 export interface PropsLogin {
-  loginApi: LoginApi;
+  userApi: UserApi;
   routeIfLogin: AppRoutes;
 }
 
-const LoginForm = ({ loginApi, routeIfLogin }: PropsLogin) => {
+const LoginForm = ({ userApi: loginApi, routeIfLogin }: PropsLogin) => {
   const [email, setEmail] = useState("otus@example.com");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);

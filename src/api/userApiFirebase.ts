@@ -5,11 +5,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { LoginApi } from "./loginApi";
+import { UserApi } from "./userApi";
 import { User as User } from "../models/User";
 import { generateID } from "../utils/dataGenerator";
 
-export class LoginApiFirebase implements LoginApi {
+export class UserApiFirebase implements UserApi {
   async signUp(email: string, password: string): Promise<User> {
     const auth = getAuth();
     let user: UserFB | undefined;
@@ -20,7 +20,7 @@ export class LoginApiFirebase implements LoginApi {
       .catch((error) => {
         console.log(error.message);
       });
-    return parseToUserApp(user);
+    return parseToAppUser(user);
   }
 
   async logIn(email: string, password: string): Promise<User> {
@@ -33,7 +33,7 @@ export class LoginApiFirebase implements LoginApi {
       .catch((error) => {
         console.log(error.message);
       });
-    return parseToUserApp(user);
+    return parseToAppUser(user);
   }
 
   async logOut(): Promise<boolean> {
@@ -50,7 +50,7 @@ export class LoginApiFirebase implements LoginApi {
   }
 }
 
-function parseToUserApp(userFirebase?: UserFB): User {
+function parseToAppUser(userFirebase?: UserFB): User {
   return {
     id: userFirebase?.uid || generateID(),
     email: userFirebase?.email || "unknown",

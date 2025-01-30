@@ -5,7 +5,7 @@ import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { removeCityFromStorage } from "../redux/actionCreators";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_CITIES } from "../utils/consts";
+import { AppRoutes } from "../utils/consts";
 
 const Cities = () => {
   const citiesState = useAppSelector((state) => state.cities);
@@ -13,8 +13,8 @@ const Cities = () => {
   const navigate = useNavigate();
 
   const navToCityJourneys = (city: City) => {
-    console.log(`GOTO: ${ROUTE_CITIES}/${city.id}`);
-    navigate(`${ROUTE_CITIES}/${city.id}`);
+    console.log(`GOTO: ${AppRoutes.CITIES}/${city.id}`);
+    navigate(`${AppRoutes.CITIES}/${city.id}`);
   };
 
   const removeCity = (city: City) => {

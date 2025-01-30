@@ -1,18 +1,16 @@
 import React from "react";
-import { ROUTE_ABOUT } from "../utils/consts";
-import { ROUTE_CITIES } from "../utils/consts";
-import { ROUTE_JOURNEYS } from "../utils/consts";
-import { ROUTE_JOURNEY_EDITOR } from "../utils/consts";
+
 import NavItem from "./NavItem";
+import { AppRoutes } from "../utils/consts";
 
 const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__links">
-        <NavItem to={ROUTE_ABOUT}>About</NavItem>
-        <NavItem to={ROUTE_CITIES}>Cities</NavItem>
-        <NavItem to={ROUTE_JOURNEYS}>Journeys</NavItem>
-        <NavItem to={ROUTE_JOURNEY_EDITOR}>Editor</NavItem>
+        <NavItem to={AppRoutes.ABOUT}>About</NavItem>
+        <NavItem to={AppRoutes.CITIES}>Cities</NavItem>
+        <NavItem to={AppRoutes.JOURNEYS}>Journeys</NavItem>
+        <NavItem to={AppRoutes.JOURNEY_EDITOR}>Editor</NavItem>
       </div>
     </nav>
   );

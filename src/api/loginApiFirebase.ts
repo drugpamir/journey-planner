@@ -5,7 +5,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { LoginApi, User as User } from "./loginApi";
+import { LoginApi } from "./loginApi";
+import { User as User } from "../models/User";
+import { generateID } from "../utils/dataGenerator";
 
 export class LoginApiFirebase implements LoginApi {
   async signUp(email: string, password: string): Promise<User> {
@@ -50,6 +52,7 @@ export class LoginApiFirebase implements LoginApi {
 
 function parseToUserApp(userFirebase?: UserFB): User {
   return {
+    id: userFirebase?.uid || generateID(),
     email: userFirebase?.email || "unknown",
     name: userFirebase?.displayName || "anonymous",
   };

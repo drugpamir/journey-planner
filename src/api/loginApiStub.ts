@@ -1,4 +1,5 @@
-import { LoginApi, User } from "./loginApi";
+import { LoginApi } from "./loginApi";
+import { User } from "../models/User";
 
 export class LoginApiStub implements LoginApi {
   signUp(email: string /*, password: string*/): Promise<User> {

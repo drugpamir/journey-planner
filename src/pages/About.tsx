@@ -1,7 +1,7 @@
 import React from "react";
 
-export const TO_ABOUT = "/about";
-
-export const About = () => {
+const About = () => {
   return <h1>About journey planner</h1>;
 };
+
+export default About;

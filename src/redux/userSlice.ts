@@ -4,7 +4,7 @@ import { User, UserByDefault } from "../models/User";
 import { loginUser, logoutUser, signUpUser } from "./userActionCreators";
 
 type UserState = {
-  user: User;
+  user: User | null;
   isLoggedIn: boolean;
 };
 

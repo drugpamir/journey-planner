@@ -2,12 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { City } from "../models/City";
 import { cityStorageApi } from "../api/storageApi";
-import { cityInfoOpenApi } from "../api/cityInfoApi";
+import { cityInfoApi } from "../utils/config";
 
 export const fetchCityInfo = createAsyncThunk(
   "cities/info",
   async (cityName: string /*, thunkAPI*/) => {
-    const city: City = await cityInfoOpenApi.fetchInfo(cityName);
+    const city: City = await cityInfoApi.fetchInfo(cityName);
     return city;
   },
 );

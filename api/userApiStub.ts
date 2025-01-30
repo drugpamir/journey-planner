@@ -1,9 +1,11 @@
-import { LoginApi, User } from "./loginApi";
+import { UserApi } from "./userApi";
+import { User } from "../models/User";
 
-export class LoginApiStub implements LoginApi {
+export class UserApiStub implements UserApi {
   signUp(email: string /*, password: string*/): Promise<User> {
     if (email.includes("otus") || email.includes("admin")) {
       return Promise.resolve({
+        id: "user-id",
         email,
         name: "user",
       });
@@ -14,12 +16,13 @@ export class LoginApiStub implements LoginApi {
 
   logIn(email: string /*, password: string*/): Promise<User> {
     return Promise.resolve({
+      id: "user-id",
       email,
       name: "user",
     });
   }
 
-  logOut(/*user: string*/): Promise<boolean> {
+  logOut(): Promise<boolean> {
     return Promise.resolve(true);
   }
 }

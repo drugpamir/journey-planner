@@ -1,18 +1,17 @@
 import React from "react";
-import { TO_ABOUT } from "../pages/About";
-import { TO_CITIES } from "../pages/Cities";
-import { TO_JOURNEYS } from "../pages/Journeys";
-import { TO_JOURNEY_EDITOR } from "../pages/JourneyEditor";
+
 import NavItem from "./NavItem";
+import { AppRoutes } from "../utils/consts";
 
 const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__links">
-        <NavItem to={TO_ABOUT}>About</NavItem>
-        <NavItem to={TO_CITIES}>Cities</NavItem>
-        <NavItem to={TO_JOURNEYS}>Journeys</NavItem>
-        <NavItem to={TO_JOURNEY_EDITOR}>Editor</NavItem>
+        <NavItem to={AppRoutes.LOGIN}>Login</NavItem>
+        <NavItem to={AppRoutes.ABOUT}>About</NavItem>
+        <NavItem to={AppRoutes.CITIES}>Cities</NavItem>
+        <NavItem to={AppRoutes.JOURNEYS}>Journeys</NavItem>
+        <NavItem to={AppRoutes.JOURNEY_EDITOR}>Editor</NavItem>
       </div>
     </nav>
   );

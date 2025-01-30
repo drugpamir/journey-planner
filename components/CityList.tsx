@@ -5,6 +5,7 @@ import CityItem from "./CityItem";
 interface Props {
   title: string;
   cities: City[];
+  navToCityJourneys(city: City): void;
   removeCity(city: City): void;
 }
 
@@ -13,8 +14,6 @@ function CityList(props: Props) {
     return <h2 style={{ textAlign: "center" }}>Cities not added</h2>;
   }
 
-  console.log("props.cities:", props.cities);
-
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>{props.title}</h2>
@@ -22,6 +21,7 @@ function CityList(props: Props) {
         <CityItem
           index={index + 1}
           city={city}
+          navToCityJourneys={props.navToCityJourneys}
           removeCity={props.removeCity}
           key={city.id}
         ></CityItem>

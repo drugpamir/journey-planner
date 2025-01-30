@@ -1,18 +1,31 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { About, TO_ABOUT } from "../pages/About";
-import { Cities, TO_CITIES } from "../pages/Cities";
-import { Journeys, TO_JOURNEYS } from "../pages/Journeys";
-import { JourneyEditor, TO_JOURNEY_EDITOR } from "../pages/JourneyEditor";
+
+import Login from "../pages/Login";
+import About from "../pages/About";
+import Cities from "../pages/Cities";
+import Journeys from "../pages/Journeys";
+import JourneyEditor from "../pages/JourneyEditor";
+import { AppRoutes } from "../utils/consts";
+import { userApi } from "../api/userApi";
+import Error404 from "../pages/Error404";
 
 function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<About />} />
-      <Route path={TO_ABOUT} element={<About />} />
-      <Route path={TO_CITIES} element={<Cities />} />
-      <Route path={TO_JOURNEYS} element={<Journeys />} />
-      <Route path={TO_JOURNEY_EDITOR} element={<JourneyEditor />} />
+      <Route index element={<About />} />
+      <Route
+        path={AppRoutes.LOGIN}
+        element={<Login userApi={userApi} routeIfLogin={AppRoutes.CITIES} />}
+      />
+      <Route path={AppRoutes.ABOUT} element={<About />} />
+      <Route
+        path={AppRoutes.CITIES}
+        element={<Cities route={AppRoutes.CITIES} />}
+      />
+      <Route path={AppRoutes.JOURNEYS} element={<Journeys />} />
+      <Route path={AppRoutes.JOURNEY_EDITOR} element={<JourneyEditor />} />
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }

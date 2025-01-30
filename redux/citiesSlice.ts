@@ -1,11 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+
 import { City, CityByDefault } from "../models/City";
 import {
   addCityToStorage,
   getStorageCities,
   fetchCityInfo,
   removeCityFromStorage,
-} from "./actionCreators";
+} from "./citiesActionCreators";
 
 type CitiesState = {
   addingCity: City;
@@ -25,7 +26,7 @@ export const citiesSlice = createSlice({
   name: "cities",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers(builder) {
     builder
       .addCase(fetchCityInfo.fulfilled, (state, action) => {
         state.addingCity = action.payload;
@@ -50,5 +51,15 @@ export const citiesSlice = createSlice({
       .addDefaultCase(() => {});
   },
 });
+
+export const cityAddingSelector = createSelector(
+  [(state: CitiesState) => state.addingCity],
+  (addingCity) => addingCity,
+);
+
+export const citiesSelector = createSelector(
+  [(state: CitiesState) => state.cities],
+  (cities) => cities,
+);
 
 export default citiesSlice.reducer;

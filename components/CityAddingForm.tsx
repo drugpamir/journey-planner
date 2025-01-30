@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom";
 import DialogButton from "./DialogButton";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchCityInfo, addCityToStorage } from "../redux/actionCreators";
-import { City, CityByDefault } from "../models/City";
+import { fetchCityInfo, addCityToStorage } from "../redux/citiesActionCreators";
 
-function AddCityForm() {
+function CityAddingForm() {
   const [cityName, setCityName] = useState<string>("");
   const citiesState = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
 
-  const onFetchCityInfo = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
+  const handleFetchCityInfo = (e: any) => {
     e.preventDefault();
     dispatch(fetchCityInfo(cityName));
   };
 
-  const onAddCity = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleAddCity = (e: any) => {
     e.preventDefault();
     console.log("onAddCity for city:", citiesState.addingCity);
     if (citiesState.addingCity) {
@@ -39,10 +35,10 @@ function AddCityForm() {
         value={cityName}
         onChange={(e) => setCityName(e.target.value)}
       />
-      <DialogButton onClick={onFetchCityInfo}>Get info</DialogButton>
-      <DialogButton onClick={onAddCity}>Add city</DialogButton>
+      <DialogButton onClick={handleFetchCityInfo}>Get info</DialogButton>
+      <DialogButton onClick={handleAddCity}>Add city</DialogButton>
     </form>
   );
 }
 
-export default AddCityForm;
+export default CityAddingForm;

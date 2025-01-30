@@ -1,7 +1,9 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { citiesSlice } from "./slice";
 
-const rootReducer = combineSlices(citiesSlice);
+import { citiesSlice } from "./citiesSlice";
+import { userSlice } from "./userSlice";
+
+const rootReducer = combineSlices(citiesSlice, userSlice);
 
 export const setupStore = () =>
   configureStore({

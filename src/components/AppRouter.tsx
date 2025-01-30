@@ -8,6 +8,7 @@ import Journeys from "../pages/Journeys";
 import JourneyEditor from "../pages/JourneyEditor";
 import { AppRoutes } from "../utils/consts";
 import { userApi } from "../api/userApi";
+import Error404 from "../pages/Error404";
 
 function AppRouter() {
   return (
@@ -24,6 +25,7 @@ function AppRouter() {
       />
       <Route path={AppRoutes.JOURNEYS} element={<Journeys />} />
       <Route path={AppRoutes.JOURNEY_EDITOR} element={<JourneyEditor />} />
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }

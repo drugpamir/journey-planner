@@ -36,7 +36,7 @@ export class LoginApiFirebase implements LoginApi {
     return parseToUserApp(user);
   }
 
-  async logOut(/*user: string*/): Promise<boolean> {
+  async logOut(): Promise<boolean> {
     const auth = getAuth();
     let success = false;
     signOut(auth)

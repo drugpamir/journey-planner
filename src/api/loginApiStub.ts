@@ -22,7 +22,7 @@ export class LoginApiStub implements LoginApi {
     });
   }
 
-  logOut(/*user: string*/): Promise<boolean> {
+  logOut(): Promise<boolean> {
     return Promise.resolve(true);
   }
 }

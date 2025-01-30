@@ -6,7 +6,7 @@ export interface LoginApi {
 
   logIn(email: string, password: string): Promise<User>;
 
-  logOut(user: string): Promise<boolean>;
+  logOut(): Promise<boolean>;
 }
 
 export const loginApi: LoginApi = new LoginApiStub();

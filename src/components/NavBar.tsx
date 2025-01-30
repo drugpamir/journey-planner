@@ -7,6 +7,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__links">
+        <NavItem to={AppRoutes.LOGIN}>Login</NavItem>
         <NavItem to={AppRoutes.ABOUT}>About</NavItem>
         <NavItem to={AppRoutes.CITIES}>Cities</NavItem>
         <NavItem to={AppRoutes.JOURNEYS}>Journeys</NavItem>

@@ -1,4 +1,7 @@
-export const ROUTE_ABOUT = "/about";
-export const ROUTE_CITIES = "/cities";
-export const ROUTE_JOURNEY_EDITOR = "/editor";
-export const ROUTE_JOURNEYS = "/journeys";
+export enum AppRoutes {
+  LOGIN = "/login",
+  ABOUT = "/about",
+  CITIES = "/cities",
+  JOURNEYS = "/editor",
+  JOURNEY_EDITOR = "/journeys",
+}

@@ -38,6 +38,7 @@ const LoginForm = ({ loginApi, routeIfLogin }: PropsLogin) => {
           id="mail"
           placeholder="email"
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <input
           type="password"
@@ -45,6 +46,7 @@ const LoginForm = ({ loginApi, routeIfLogin }: PropsLogin) => {
           id="pwd"
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
         <button type="submit">Login</button>
         {error && <span>Wrong email or password!</span>}

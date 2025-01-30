@@ -1,20 +1,24 @@
 import React from "react";
-import AddCityForm from "../components/Form.AddCity";
+import CityAddingForm from "../components/CityAddingForm";
 import CityList from "../components/CityList";
 import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { removeCityFromStorage } from "../redux/actionCreators";
+import { removeCityFromStorage } from "../redux/citiesActionCreators";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "../utils/consts";
 
-const Cities = () => {
+interface Props {
+  route: AppRoutes;
+}
+
+const Cities = ({ route: routeCities }: Props) => {
   const citiesState = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const navToCityJourneys = (city: City) => {
-    console.log(`GOTO: ${AppRoutes.CITIES}/${city.id}`);
-    navigate(`${AppRoutes.CITIES}/${city.id}`);
+    console.log(`GOTO: ${routeCities}/${city.id}`);
+    navigate(`${routeCities}/${city.id}`);
   };
 
   const removeCity = (city: City) => {
@@ -24,7 +28,7 @@ const Cities = () => {
   return (
     <>
       <h1>Cities</h1>
-      <AddCityForm></AddCityForm>
+      <CityAddingForm></CityAddingForm>
       <CityList
         cities={citiesState.cities}
         title="Added cities"

@@ -10,11 +10,13 @@ export type CityInput = {
   lon: number;
 };
 
-export type City = CityInput & {
-  id: string;
-  local_name: string;
-  journeys: Journey[];
-};
+export type City =
+  | (CityInput & {
+      id: string;
+      local_name: string;
+      journeys: Journey[];
+    })
+  | null;
 
 export function parseToCity(cityInput: CityInput): City {
   return {

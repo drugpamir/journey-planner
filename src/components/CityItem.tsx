@@ -14,7 +14,7 @@ function CityItem({ index, city, navToCityJourneys, removeCity }: Props) {
     <div className="city">
       <div className="city__content">
         <strong>
-          {index}. {city.name}
+          {index}. {city?.name}
         </strong>
       </div>
       <div className="city__btns">

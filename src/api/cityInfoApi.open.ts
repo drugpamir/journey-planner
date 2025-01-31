@@ -1,4 +1,4 @@
-import { City, CityByDefault, parseToCity } from "../models/City";
+import { City, parseToCity } from "../models/City";
 import { CityInfoAPI } from "./cityInfoApi";
 import { fetchJson } from "./fetchUrl";
 
@@ -16,7 +16,7 @@ export class CityInfoOpenApi implements CityInfoAPI {
       console.log("Loaded json:", json);
       console.log("Loaded city:", city);
     } catch {
-      city = CityByDefault;
+      city = null;
       console.log("City NOT found");
     }
     return city;

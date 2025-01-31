@@ -1,6 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { City, CityByDefault } from "../models/City";
+import { City } from "../models/City";
 import {
   fetchCityInfo,
   addCityToStorage,
@@ -16,7 +16,7 @@ type CitiesState = {
 };
 
 const initialState: CitiesState = {
-  currentCity: CityByDefault,
+  currentCity: null,
   cities: [],
   isLoading: false,
   error: "",

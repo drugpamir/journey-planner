@@ -17,18 +17,6 @@ export type City =
     })
   | null;
 
-export const CityByDefault: City = {
-  id: generateCityID({ country: "RU", name: "Moscow", state: "Moscow" }),
-  name: "Moscow",
-  local_names: { ru: "Москва" },
-  local_name: "Москва",
-  state: "Moscow",
-  country: "RU",
-  lat: 33,
-  lon: 55,
-  journeys: [],
-};
-
 export function parseToCity(cityInput: CityInput): City {
   return {
     ...cityInput,

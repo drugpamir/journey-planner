@@ -31,7 +31,8 @@ html {
   border: 1px solid teal;
 }
 
-.city {
+.city,
+.journey {
   display: flex;
   padding: 15px;
   border: 2px solid teal;

@@ -6,8 +6,9 @@ import { cityInfoApi } from "../utils/config";
 
 export const fetchCityInfo = createAsyncThunk(
   "cities/info",
-  async (cityName: string /*, thunkAPI*/) => {
+  async (cityName: string, thunkAPI) => {
     const city: City = await cityInfoApi.fetchInfo(cityName);
+    thunkAPI.dispatch(addCityToStorage({ ...city }));
     return city;
   },
 );
@@ -22,7 +23,7 @@ export const getStorageCities = createAsyncThunk(
 
 export const addCityToStorage = createAsyncThunk(
   "cities/create",
-  async (cityParams: Omit<City, "id"> /*, thunkAPI*/) => {
+  async (cityParams: Omit<City, "id">) => {
     const response = await cityStorageApi.addCity(cityParams);
     return response;
   },
@@ -30,8 +31,10 @@ export const addCityToStorage = createAsyncThunk(
 
 export const removeCityFromStorage = createAsyncThunk(
   "cities/remove",
-  async (city: City /*, thunkAPI*/) => {
-    const response = await cityStorageApi.removeCity(city.id);
-    return response;
+  async (city: City) => {
+    if (city) {
+      const response = await cityStorageApi.removeCity(city.id);
+      return response;
+    }
   },
 );

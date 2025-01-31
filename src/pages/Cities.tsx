@@ -1,25 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import CityAddingForm from "../components/CityAddingForm";
 import CityList from "../components/CityList";
 import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { removeCityFromStorage } from "../redux/citiesActionCreators";
-import { AppRoutes } from "../utils/consts";
 
-interface Props {
-  route: AppRoutes;
-}
-
-const Cities = ({ route: routeCities }: Props) => {
+const Cities = () => {
   const { cities } = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
+  const location = useLocation();
   const navigate = useNavigate();
 
+  const parentRoute = location.pathname;
+
   const navToCityJourneys = (city: City) => {
-    console.log(`GOTO: ${routeCities}/${city.id}`);
-    navigate(`${routeCities}/${city.id}`);
+    navigate(`${parentRoute}/${city?.id}`);
   };
 
   const removeCity = (city: City) => {

@@ -51,5 +51,5 @@ function generateCityID({
   if (state && state !== name) {
     id += `${state}`;
   }
-  return id;
+  return id.toLowerCase();
 }

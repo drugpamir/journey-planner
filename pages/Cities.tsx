@@ -11,10 +11,7 @@ import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
 const Cities = () => {
   const { cities } = useAppSelector((state) => state.cities);
   const dispatch = useAppDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const parentRoute = location.pathname;
 
   const navToCityJourneys = (city: City) => {
     if (!city) {

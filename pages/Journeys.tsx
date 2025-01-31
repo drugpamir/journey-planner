@@ -11,9 +11,9 @@ const Journeys = () => {
     return null;
   }
   const [city, setCity] = useCity();
-  if (cityId !== city?.id) {
+  if (!city || cityId !== city?.id) {
     console.log("city.id is not equal cityId query parameter");
-    setCity(null); //TODO: РґРѕР±Р°РІРёС‚СЊ РІ С…СѓРє setCityName
+    setCity(null); //TODO: добавить в хук setCityName
   }
 
   return <h1>Journeys for {city?.local_name}</h1>;

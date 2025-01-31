@@ -15,10 +15,7 @@ function AppRouter() {
       <Route index element={<About />} />
       <Route path={AppRoutes.LOGIN} element={<Login />} />
       <Route path={AppRoutes.ABOUT} element={<About />} />
-      <Route
-        path={AppRoutes.CITIES}
-        element={<Cities route={AppRoutes.CITIES} />}
-      />
+      <Route path={AppRoutes.CITIES} element={<Cities />} />
       <Route path={AppRoutes.JOURNEYS} element={<Journeys />} />
       <Route path={AppRoutes.JOURNEY_EDITOR} element={<JourneyEditor />} />
       <Route path="*" element={<Error404 />} />

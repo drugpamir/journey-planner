@@ -1,4 +1,3 @@
-import { generateID } from "../utils/dataGenerator";
 import { Journey } from "./Journey";
 
 export type CityInput = {
@@ -18,17 +17,8 @@ export type City =
     })
   | null;
 
-export function parseToCity(cityInput: CityInput): City {
-  return {
-    ...cityInput,
-    id: generateID(),
-    local_name: cityInput.local_names[navigator.language],
-    journeys: [],
-  };
-}
-
 export const CityByDefault: City = {
-  id: generateID(),
+  id: generateCityID({ country: "RU", name: "Moscow", state: "Moscow" }),
   name: "Moscow",
   local_names: { ru: "Москва" },
   local_name: "Москва",
@@ -38,3 +28,28 @@ export const CityByDefault: City = {
   lon: 55,
   journeys: [],
 };
+
+export function parseToCity(cityInput: CityInput): City {
+  return {
+    ...cityInput,
+    id: generateCityID(cityInput),
+    local_name: cityInput.local_names[navigator.language],
+    journeys: [],
+  };
+}
+
+function generateCityID({
+  country,
+  name,
+  state,
+}: {
+  country: string;
+  name: string;
+  state: string;
+}): string {
+  let id: string = `${name}-${country}`;
+  if (state && state !== name) {
+    id += `-${state}`;
+  }
+  return id.toLowerCase();
+}

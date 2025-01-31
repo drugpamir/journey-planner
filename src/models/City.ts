@@ -47,9 +47,9 @@ function generateCityID({
   name: string;
   state: string;
 }): string {
-  let id: string = `${country}-${name}`;
+  let id: string = `${name}-${country}`;
   if (state && state !== name) {
-    id += `${state}`;
+    id += `-${state}`;
   }
   return id.toLowerCase();
 }

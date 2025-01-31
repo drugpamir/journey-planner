@@ -6,6 +6,7 @@ import CityList from "../components/CityList";
 import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { removeCityFromStorage } from "../redux/citiesActionCreators";
+import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
 
 const Cities = () => {
   const { cities } = useAppSelector((state) => state.cities);
@@ -16,7 +17,11 @@ const Cities = () => {
   const parentRoute = location.pathname;
 
   const navToCityJourneys = (city: City) => {
-    navigate(`${parentRoute}/${city?.id}`);
+    if (!city) {
+      return;
+    }
+    const url = AppRoutes.JOURNEYS.replace(":" + SUBPATH_CITY_ID, city.id);
+    navigate(url);
   };
 
   const removeCity = (city: City) => {

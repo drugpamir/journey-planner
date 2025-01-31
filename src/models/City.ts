@@ -38,7 +38,13 @@ export function parseToCity(cityInput: CityInput): City {
   };
 }
 
-function generateCityID({
+export function getCityNameById(cityId: string): string {
+  const cityName = cityId.slice(0, cityId.indexOf("_"));
+  console.log(cityName);
+  return cityName;
+}
+
+export function generateCityID({
   country,
   name,
   state,
@@ -47,9 +53,9 @@ function generateCityID({
   name: string;
   state: string;
 }): string {
-  let id: string = `${name}-${country}`;
+  let id: string = `${name}_${country}`;
   if (state && state !== name) {
-    id += `-${state}`;
+    id += `_${state}`;
   }
   return id.toLowerCase();
 }

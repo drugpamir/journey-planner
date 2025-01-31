@@ -1,22 +1,22 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { City, CityByDefault } from "../models/City";
 import {
+  fetchCityInfo,
   addCityToStorage,
   getStorageCities,
-  fetchCityInfo,
   removeCityFromStorage,
 } from "./citiesActionCreators";
 
 type CitiesState = {
-  addingCity: City;
+  currentCity: City;
   cities: City[];
   isLoading: boolean;
   error: string;
 };
 
 const initialState: CitiesState = {
-  addingCity: CityByDefault,
+  currentCity: CityByDefault,
   cities: [],
   isLoading: false,
   error: "",
@@ -25,11 +25,15 @@ const initialState: CitiesState = {
 export const citiesSlice = createSlice({
   name: "cities",
   initialState,
-  reducers: {},
+  reducers: {
+    setCityReducer(state, action: PayloadAction<City>) {
+      state.currentCity = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchCityInfo.fulfilled, (state, action) => {
-        state.addingCity = action.payload;
+        state.currentCity = action.payload;
       })
       .addCase(getStorageCities.fulfilled, (state, action) => {
         state.cities = action.payload;
@@ -43,7 +47,7 @@ export const citiesSlice = createSlice({
       })
       .addCase(removeCityFromStorage.fulfilled, (state, action) => {
         state.cities = state.cities.filter(
-          (city) => city.id !== action.meta.arg.id,
+          (city) => city && city.id !== action.meta.arg?.id,
         );
         state.isLoading = false;
         state.error = "";
@@ -52,14 +56,11 @@ export const citiesSlice = createSlice({
   },
 });
 
-export const cityAddingSelector = createSelector(
-  [(state: CitiesState) => state.addingCity],
-  (addingCity) => addingCity,
-);
-
 export const citiesSelector = createSelector(
   [(state: CitiesState) => state.cities],
   (cities) => cities,
 );
+
+export const { setCityReducer } = citiesSlice.actions;
 
 export default citiesSlice.reducer;

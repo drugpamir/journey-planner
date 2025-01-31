@@ -23,7 +23,7 @@ function CityList(props: Props) {
           city={city}
           navToCityJourneys={props.navToCityJourneys}
           removeCity={props.removeCity}
-          key={city.id}
+          key={city?.id}
         ></CityItem>
       ))}
     </div>

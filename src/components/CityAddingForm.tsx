@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import DialogButton from "./DialogButton";
 import { useAppDispatch } from "../hooks/redux";
-import { fetchCityInfo } from "../redux/citiesActionCreators";
+import { addCityToStorage, fetchCityInfo } from "../redux/citiesActionCreators";
 
 function CityAddingForm() {
   const [cityName, setCityName] = useState<string>("");
   const dispatch = useAppDispatch();
 
-  const handleAddCity = (e: any) => {
+  const handleAddCity = async (e: any) => {
     e.preventDefault();
-    dispatch(fetchCityInfo(cityName));
+    const city = await dispatch(fetchCityInfo(cityName)).unwrap();
+    if (city) {
+      dispatch(addCityToStorage(city));
+    }
     setCityName("");
   };
 

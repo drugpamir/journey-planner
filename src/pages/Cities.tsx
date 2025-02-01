@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import CityAddingForm from "../components/CityAddingForm";
 import CityList from "../components/CityList";
@@ -17,7 +17,7 @@ const Cities = () => {
     if (!city) {
       return;
     }
-    const url = AppRoutes.JOURNEYS.replace(":" + SUBPATH_CITY_ID, city.id);
+    const url = AppRoutes.JOURNEYS.replace(":" + SUBPATH_CITY_ID, city.path);
     navigate(url);
   };
 

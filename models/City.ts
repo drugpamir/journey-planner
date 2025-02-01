@@ -1,5 +1,7 @@
 import { Journey } from "./Journey";
 
+// export type CityId = string & { __brand: "CityId" };
+
 export type CityInput = {
   name: string;
   local_names: Record<string, string>;
@@ -9,18 +11,17 @@ export type CityInput = {
   lon: number;
 };
 
-export type City =
-  | (CityInput & {
-      id: string;
-      local_name: string;
-      journeys: Journey[];
-    })
-  | null;
+export type City = CityInput & {
+  id: string;
+  path: string;
+  local_name: string;
+  journeys: Journey[];
+};
 
-export function parseToCity(cityInput: CityInput): City {
+export function parseToCity(cityInput: CityInput): Omit<City, "id"> {
   return {
     ...cityInput,
-    id: generateCityID(cityInput),
+    path: generateCityID(cityInput),
     local_name: cityInput.local_names[navigator.language],
     journeys: [],
   };

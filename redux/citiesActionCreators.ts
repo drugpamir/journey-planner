@@ -6,9 +6,9 @@ import { cityInfoApi } from "../utils/config";
 
 export const fetchCityInfo = createAsyncThunk(
   "cities/info",
-  async (cityName: string, thunkAPI) => {
-    const city: City = await cityInfoApi.fetchInfo(cityName);
-    thunkAPI.dispatch(addCityToStorage({ ...city }));
+  async (cityName: string) => {
+    const city: Omit<City, "id"> = await cityInfoApi.fetchInfo(cityName);
+    // thunkAPI.dispatch(addCityToStorage({ ...city }));
     return city;
   },
 );
@@ -33,7 +33,7 @@ export const removeCityFromStorage = createAsyncThunk(
   "cities/remove",
   async (city: City) => {
     if (city) {
-      const response = await cityStorageApi.removeCity(city.id);
+      const response = await cityStorageApi.removeCity(city.path);
       return response;
     }
   },

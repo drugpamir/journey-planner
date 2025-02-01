@@ -2,7 +2,7 @@ import { City, generateCityID, getCityNameById } from "./City";
 
 describe("City", () => {
   const cityWithStateLikeName: City = {
-    id: generateCityID({ country: "RU", name: "Moscow", state: "Moscow" }),
+    path: generateCityID({ country: "RU", name: "Moscow", state: "Moscow" }),
     name: "Moscow",
     local_names: { ru: "Москва" },
     local_name: "Москва",
@@ -13,7 +13,7 @@ describe("City", () => {
     journeys: [],
   };
   const cityWithState: City = {
-    id: generateCityID({
+    path: generateCityID({
       country: "RU",
       name: "Moscow",
       state: "Moscow region",
@@ -29,8 +29,8 @@ describe("City", () => {
   };
   beforeEach(() => {});
   it("id starts with city name", () => {
-    expect(cityWithStateLikeName.id.startsWith(cityWithState.name));
-    expect(cityWithState.id.startsWith(cityWithState.name));
+    expect(cityWithStateLikeName.path.startsWith(cityWithState.name));
+    expect(cityWithState.path.startsWith(cityWithState.name));
   });
 
   describe("Utility function", () => {

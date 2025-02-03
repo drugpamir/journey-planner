@@ -3,6 +3,7 @@ import About from "../pages/About";
 import Cities from "../pages/Cities";
 import JourneyEditor from "../pages/JourneyEditor";
 import Journeys from "../pages/Journeys";
+import Error404 from "../pages/Error404";
 import { AppRoutes } from "../utils/consts";
 
 export type AppRoute = {
@@ -18,6 +19,10 @@ export const publicRoutes: AppRoute[] = [
   {
     route: AppRoutes.ABOUT,
     page: About,
+  },
+  {
+    route: AppRoutes.ERROR_404,
+    page: Error404,
   },
 ];
 
@@ -41,5 +46,9 @@ export const privateRoutes: AppRoute[] = [
   {
     route: AppRoutes.JOURNEY_EDITOR,
     page: JourneyEditor,
+  },
+  {
+    route: AppRoutes.ERROR_404,
+    page: Error404,
   },
 ];

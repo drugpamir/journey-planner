@@ -30,10 +30,10 @@ const Cities = () => {
       <h1>Cities</h1>
       <CityAddingForm></CityAddingForm>
       <CityList
-        cities={cities}
+        items={cities}
         title="Added cities"
-        navToCityJourneys={navToCityJourneys}
-        removeCity={removeCity}
+        onChooseItem={navToCityJourneys}
+        onRemoveItem={removeCity}
       ></CityList>
     </>
   );

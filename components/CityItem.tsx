@@ -1,27 +1,28 @@
 import React from "react";
+
 import { City } from "../models/City";
 import DialogButton from "./DialogButton";
 
 interface Props {
   index: number;
-  city: City;
-  navToCityJourneys(city: City): void;
-  removeCity(city: City): void;
+  item: City;
+  onChooseItem(city: City): void;
+  onRemoveItem(city: City): void;
 }
 
-function CityItem({ index, city, navToCityJourneys, removeCity }: Props) {
+function CityItem({ index, item, onChooseItem, onRemoveItem }: Props) {
   return (
     <div className="city">
       <div className="city__content">
         <strong>
-          {index}. {city?.name}
+          {index}. {item.name}
         </strong>
       </div>
       <div className="city__btns">
-        <DialogButton onClick={() => navToCityJourneys(city)}>
+        <DialogButton onClick={() => onChooseItem(item)}>
           To journeys
         </DialogButton>
-        <DialogButton onClick={() => removeCity(city)}>
+        <DialogButton onClick={() => onRemoveItem(item)}>
           Remove city
         </DialogButton>
       </div>

@@ -18,6 +18,7 @@ function AppRouter() {
       <Route path={AppRoutes.CITIES} element={<Cities />} />
       <Route path={AppRoutes.JOURNEYS} element={<Journeys />} />
       <Route path={AppRoutes.JOURNEY_EDITOR} element={<JourneyEditor />} />
+      <Route path={AppRoutes.ERROR_404} element={<Error404 />} />
       <Route path="*" element={<Error404 />} />
     </Routes>
   );

@@ -2,6 +2,7 @@ export const SUBPATH_CITY_ID = "cityId";
 export const SUBPATH_JOURNEY_ID = "journeyId";
 
 export enum AppRoutes {
+  ERROR_404 = `/error404`,
   LOGIN = `/login`,
   ABOUT = `/about`,
   CITIES = `/cities`,

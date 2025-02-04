@@ -22,9 +22,9 @@ const MapPanel = (coordsInput: Coords) => {
     delete L.Icon.Default.prototype._getIconUrl;
 
     L.Icon.Default.mergeOptions({
-      iconRetinaUrl: require("../images/marker-icon-2x.png").default,
-      iconUrl: require("../images/marker-icon.png").default,
-      shadowUrl: require("../images/marker-shadow.png").default,
+      iconRetinaUrl: require("../images/marker-icon-2x.png"),
+      iconUrl: require("../images/marker-icon.png"),
+      shadowUrl: require("../images/marker-shadow.png"),
     });
   }, []);
 

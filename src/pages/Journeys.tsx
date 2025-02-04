@@ -4,6 +4,7 @@ import { useAppSelector } from "../hooks/redux";
 
 import JourneyList from "../components/JourneyList";
 import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
+import MapPanel from "../components/MapPanel";
 import { City } from "../models/City";
 
 const Journeys = () => {
@@ -25,6 +26,7 @@ const Journeys = () => {
   return (
     <>
       <h1>Journeys for {city?.local_name}</h1>
+      {city && <MapPanel lat={city?.lat || 0} lon={city?.lon || 0}></MapPanel>}
       <JourneyList
         title={`Journeys for ${city?.local_name}`}
         items={city?.journeys || []}

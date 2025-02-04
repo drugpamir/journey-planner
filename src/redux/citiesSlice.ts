@@ -39,11 +39,25 @@ export const citiesSlice = createSlice({
         }
         state.currentCity = action.payload;
       })
+      .addCase(fetchCityInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = `unknown error during fetching city ${action.meta.arg}`;
+        console.log(state.error);
+      })
+
       .addCase(getStorageCities.fulfilled, (state, action) => {
         state.cities = action.payload;
         state.isLoading = false;
         state.error = "";
       })
+      .addCase(getStorageCities.rejected, (state, action) => {
+        state.cities = [];
+        state.isLoading = false;
+        state.error =
+          action.error.message || `unknown error during get storage cities`;
+        console.log(state.error);
+      })
+
       .addCase(addCityToStorage.fulfilled, (state, action) => {
         if (!action.payload) {
           console.log("no city to add");
@@ -58,6 +72,14 @@ export const citiesSlice = createSlice({
         state.isLoading = false;
         state.error = "";
       })
+      .addCase(addCityToStorage.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error =
+          action.error.message ||
+          `unknown error during adding city ${action.meta.arg.name}`;
+        console.log(state.error);
+      })
+
       .addCase(removeCityFromStorage.fulfilled, (state, action) => {
         console.log(`removing city "${action.meta.arg.name}"`);
         state.cities = state.cities.filter(
@@ -66,6 +88,14 @@ export const citiesSlice = createSlice({
         state.isLoading = false;
         state.error = "";
       })
+      .addCase(removeCityFromStorage.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error =
+          action.error.message ||
+          `unknown error during removing city ${action.meta.arg.name}`;
+        console.log(state.error);
+      })
+
       .addDefaultCase(() => {});
   },
 });

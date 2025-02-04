@@ -1,44 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAppSelector } from "../hooks/redux";
 
 import JourneyList from "../components/JourneyList";
-import { Journey } from "../models/Journey";
-import { AppRoutes, SUBPATH_JOURNEY_ID } from "../utils/consts";
-import useCity from "../hooks/useCity";
+import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
+import MapPanel from "../components/MapPanel";
+import { City } from "../models/City";
 
 const Journeys = () => {
-  const navigate = useNavigate();
-  const [city] = useCity();
+  const [city, setCity] = useState<City | undefined>(undefined);
+
+  const { cities } = useAppSelector((state) => state.cities);
+
+  const params = useParams();
+  let cityId = params[SUBPATH_CITY_ID];
 
   useEffect(() => {
-    if (!city) {
+    if (!cities) {
+      const navigate = useNavigate();
       navigate(AppRoutes.ERROR_404);
     }
+    setCity(cities.find((c) => c.path === cityId));
   }, []);
-
-  const onChooseItem = (journey: Journey) => {
-    if (!journey) {
-      return;
-    }
-    const url = AppRoutes.JOURNEY_EDITOR.replace(
-      ":" + SUBPATH_JOURNEY_ID,
-      journey.id,
-    );
-    navigate(url);
-  };
-
-  const onRemoveItem = (journey: Journey) => {
-    // dispatch(removeJourneyFromStorage(city));
-  };
 
   return (
     <>
       <h1>Journeys for {city?.local_name}</h1>
+      {city && <MapPanel lat={city?.lat || 0} lon={city?.lon || 0}></MapPanel>}
       <JourneyList
         title={`Journeys for ${city?.local_name}`}
         items={city?.journeys || []}
-        onChooseItem={onChooseItem}
-        onRemoveItem={onRemoveItem}
       ></JourneyList>
     </>
   );

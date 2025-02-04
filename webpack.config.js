@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { DefinePlugin, EnvironmentPlugin } = require("webpack");
+const { DefinePlugin } = require("webpack");
 const dotenv = require("dotenv");
 const path = require("path");
 
@@ -25,6 +25,12 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: {
+          loader: "file-loader",
+        },
+      },
     ],
   },
   devServer: {
@@ -33,7 +39,7 @@ module.exports = {
     },
     open: true, // Автоматически открывать браузер
     compress: true,
-    port: 9000,
+    port: 9001,
     historyApiFallback: true,
   },
   plugins: [

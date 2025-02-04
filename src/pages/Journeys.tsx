@@ -1,27 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "../hooks/redux";
+import { useParams } from "react-router-dom";
 
 import JourneyList from "../components/JourneyList";
-import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
+import { SUBPATH_CITY_ID } from "../utils/consts";
 import MapPanel from "../components/MapPanel";
 import { City } from "../models/City";
+import { getStorageCities } from "../redux/citiesActionCreators";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 const Journeys = () => {
+  console.log("journeys page");
+
   const [city, setCity] = useState<City | undefined>(undefined);
 
-  const { cities } = useAppSelector((state) => state.cities);
+  const { cities, isLoading } = useAppSelector((state) => state.cities);
 
   const params = useParams();
   let cityId = params[SUBPATH_CITY_ID];
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    if (!cities) {
-      const navigate = useNavigate();
-      navigate(AppRoutes.ERROR_404);
-    }
-    setCity(cities.find((c) => c.path === cityId));
-  }, []);
+    const fetchCities = async () => {
+      console.log("cities at first:", cities);
+      if (!cities.length) {
+        await dispatch(getStorageCities()).unwrap();
+        console.log("cities dispatched:", cities);
+      }
+      console.log("cityId:", cityId);
+      const foundCity = cities.find((city) => city.path === cityId);
+      if (foundCity) {
+        setCity(foundCity);
+      }
+    };
+    fetchCities();
+  }, [isLoading, cityId]);
 
   return (
     <>

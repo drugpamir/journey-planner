@@ -6,12 +6,12 @@ export class CityLocalStorage implements StorageAPI {
 
   #getCitiesSync(): City[] {
     const storedRegions = localStorage.getItem(this.#citiesStorageKey);
-    console.log("storedRegions:", storedRegions);
+    // console.log("storedRegions:", storedRegions);
     if (!storedRegions) {
       return [];
     }
     const regions: City[] = JSON.parse(storedRegions);
-    console.log("regions:", regions);
+    // console.log("regions:", regions);
     return regions;
   }
 

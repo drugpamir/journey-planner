@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CityAddingForm from "../components/CityAddingForm";
 import CityList from "../components/CityList";
 import { City } from "../models/City";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { removeCityFromStorage } from "../redux/citiesActionCreators";
+import {
+  getStorageCities,
+  removeCityFromStorage,
+} from "../redux/citiesActionCreators";
 import { AppRoutes, SUBPATH_CITY_ID } from "../utils/consts";
 
 const Cities = () => {
@@ -13,7 +16,11 @@ const Cities = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const navToCityJourneys = (city: City) => {
+  useEffect(() => {
+    dispatch(getStorageCities());
+  }, []);
+
+  const onChooseItem = (city: City) => {
     if (!city) {
       return;
     }
@@ -21,7 +28,7 @@ const Cities = () => {
     navigate(url);
   };
 
-  const removeCity = (city: City) => {
+  const onRemoveItem = (city: City) => {
     dispatch(removeCityFromStorage(city));
   };
 
@@ -32,8 +39,8 @@ const Cities = () => {
       <CityList
         items={cities}
         title="Added cities"
-        onChooseItem={navToCityJourneys}
-        onRemoveItem={removeCity}
+        onChooseItem={onChooseItem}
+        onRemoveItem={onRemoveItem}
       ></CityList>
     </>
   );
